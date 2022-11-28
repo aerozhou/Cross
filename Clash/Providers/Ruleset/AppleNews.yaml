@@ -1,13 +1,13 @@
 payload:
   # 内容：AppleNews
-  DOMAIN,gateway.icloud.com
-  DOMAIN,news-assets.apple.com
-  DOMAIN,news-events.apple.com
-  DOMAIN,news-edge.apple.com
-  DOMAIN,news-client-search.apple.com
-  DOMAIN,news-client.apple.com
-  DOMAIN,apple.comscoreresearch.com
-  DOMAIN-SUFFIX,apple.news
-  USER-AGENT,AppleNews*
-  USER-AGENT,com.apple.news*
-  PROCESS-NAME,news
+  - DOMAIN,gateway.icloud.com
+  - DOMAIN,news-assets.apple.com
+  - DOMAIN,news-events.apple.com
+  - DOMAIN,news-edge.apple.com
+  - DOMAIN,news-client-search.apple.com
+  - DOMAIN,news-client.apple.com
+  - DOMAIN,apple.comscoreresearch.com
+  - DOMAIN-SUFFIX,apple.news
+  - USER-AGENT,AppleNews*
+  - USER-AGENT,com.apple.news*
+  - PROCESS-NAME,news
