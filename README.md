@@ -1,1 +1,2 @@
-# 计算机的配置。
+# Clash，Quantumult，Surge 配置规则
+
