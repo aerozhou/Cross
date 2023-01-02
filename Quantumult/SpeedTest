@@ -1,0 +1,4 @@
+# > SpeedTest
+USER-AGENT,Speedtest*,direct
+DOMAIN-SUFFIX,speedtest.net,direct
+DOMAIN-KEYWORD,speedtest.net,direct
