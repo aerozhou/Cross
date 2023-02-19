@@ -9,3 +9,6 @@ DOMAIN-SUFFIX,googletagmanager.com
 DOMAIN-SUFFIX,f7tk.com
 DOMAIN-SUFFIX,doubleclick.net
 DOMAIN-SUFFIX,google-analytics.com
+DOMAIN-SUFFIX, ai.com
+DOMAIN, cdn.auth0.com
+DOMAIN, openaiapi-site.azureedge.net
