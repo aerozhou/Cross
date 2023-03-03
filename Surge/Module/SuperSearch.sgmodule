@@ -1,6 +1,5 @@
 #!name=Safari多合一搜索
 #!desc=需要把Safari的搜索引擎设置为：DuckDuckGo。
-#!system=ios
 
 [URL Rewrite]
 # gi (Google图片) header
