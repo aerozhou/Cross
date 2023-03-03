@@ -1,4 +1,4 @@
-#!name=Safari多合一搜索
+#!name=iOS Safari和Spotlight多合一搜索
 #!desc=可以在Spotlight和Safari中快捷搜索。需要把Safari的搜索引擎设置为：DuckDuckGo。
 
 [URL Rewrite]
