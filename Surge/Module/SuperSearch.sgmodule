@@ -62,6 +62,5 @@
 # Chrome  bd(baidu)
 ^https:\/\/www\.google\.com\/search\?q=bd\+([^&]+) https://m.baidu.com/s?word=$1 302
 
-
 [MITM]
 hostname = %APPEND% duckduckgo.com
