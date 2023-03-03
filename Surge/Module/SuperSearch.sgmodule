@@ -2,6 +2,8 @@
 #!desc=可以在Spotlight和Safari中快捷搜索。需要把Safari的搜索引擎设置为：DuckDuckGo。
 
 [URL Rewrite]
+# gg (Google)
+^https:\/\/duckduckgo.com\/\?q=gi\+([^&]+).+ https://www.google.com/search?q=$1 302
 # gi (Google图片) header
 ^https:\/\/duckduckgo.com\/\?q=gi\+([^&]+).+ https://www.google.com/search?&tbm=isch&q=$1 302
 # wk (Wikipedia中文) header
