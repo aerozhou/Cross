@@ -3,6 +3,7 @@
 #!system=ios
 
 [URL Rewrite]
+
 # Thanks to @zqzess
 # gi (Google图片) header
 ^https:\/\/duckduckgo.com\/\?q=gi\+([^&]+).+ https://www.google.com/search?&tbm=isch&q=$1 302
@@ -61,5 +62,6 @@
 # Chrome  bd(baidu)
 ^https:\/\/www\.google\.com\/search\?q=bd\+([^&]+) https://m.baidu.com/s?word=$1 302
 
+
 [MITM]
-hostname = %APPEND% www.duckduckgo.com,www.google.com
+hostname = %APPEND% duckduckgo.com
