@@ -1,10 +1,8 @@
 #!name=iOS Safari多合一搜索
-#!desc=以下为Safari全能搜索、需要把Safari的搜索引擎设置为：DuckDuckGo。
+#!desc=需要把Safari的搜索引擎设置为：DuckDuckGo。
 #!system=ios
 
 [URL Rewrite]
-
-# Thanks to @zqzess
 # gi (Google图片) header
 ^https:\/\/duckduckgo.com\/\?q=gi\+([^&]+).+ https://www.google.com/search?&tbm=isch&q=$1 302
 # wk (Wikipedia中文) header
