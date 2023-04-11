@@ -1,0 +1,8 @@
+#!name=🔍New Bing
+#!desc= Unlock New Bing Chat for other browers.
+
+[MITM]
+hostname = %APPEND% *.bing.com, bing.com
+
+[Script]
+bing-edge-ua = type=http-request,pattern=^http(s)?:\/\/(?:.*\.)?bing\.com,script-path=https://github.com/aerozhou/Geek/blob/main/Surge/Scripts/NewBing.js,requires-body=false
