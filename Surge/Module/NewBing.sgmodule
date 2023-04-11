@@ -1,7 +1,7 @@
-#!name= Bing重定向
-#!desc= 解决Bing重定向到bing.com&mkt=zh-CN的问题。
+#!name=New Bing 全浏览器通用
 
-[Rule]
-DOMAIN,bing.com,🔍Bing
-PROCESS-RESPONSE,html,rewrite-path:/bing.com?mkt=zh-CN, /bing.com
-PROCESS-REQUEST,header=x-forwarded-for,rewrite:127.0.0.1
+[MITM]
+hostname = %APPEND% *.bing.com, bing.com
+
+[Script]
+bing-edge-ua = type=http-request,pattern=^http(s)?:\/\/(?:.*\.)?bing\.com,script-path=NewBing.js,requires-body=false
