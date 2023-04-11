@@ -1,7 +1,0 @@
-#!name=New Bing 全浏览器通用
-
-[MITM]
-hostname = %APPEND% *.bing.com, bing.com
-
-[Script]
-bing-edge-ua = type=http-request,pattern=^http(s)?:\/\/(?:.*\.)?bing\.com,script-path=https://raw.githubusercontent.com/aerozhou/Geek/main/Surge/Scripts/NewBing.js,requires-body=false
