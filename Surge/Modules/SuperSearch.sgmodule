@@ -1,63 +1,63 @@
 #!name=iOS Safari和Spotlight多合一搜索
-#!desc=可以在Spotlight和Safari中快捷搜索。需要把Safari的搜索引擎设置为：DuckDuckGo。
+#!desc=可以在Spotlight和Safari中快捷搜索。需要把Safari的搜索引擎设置为：Ecosia。
 
 [URL Rewrite]
 # gg (Google)
-^https:\/\/duckduckgo.com\/\?q=gi\+([^&]+).+ https://www.google.com/search?q=$1 302
+^https://www.ecosia.org/search?tt=43bbc89c&q=gi\+([^&]+).+ https://www.google.com/search?q=$1 302
 # gi (Google图片) header
-^https:\/\/duckduckgo.com\/\?q=gi\+([^&]+).+ https://www.google.com/search?&tbm=isch&q=$1 302
+^https://www.ecosia.org/search?tt=43bbc89c&q=gi\+([^&]+).+ https://www.google.com/search?&tbm=isch&q=$1 302
 # wk (Wikipedia中文) header
-^https:\/\/duckduckgo.com\/\?q=wkz\+([^&]+).+ https://zh.wikipedia.org/wiki/$2 302
+^https://www.ecosia.org/search?tt=43bbc89c&q=wkz\+([^&]+).+ https://zh.wikipedia.org/wiki/$2 302
 # wk (Wikipedia) header
-^https:\/\/duckduckgo.com\/\?q=wk\+([^&]+).+ https://wikipedia.org/wiki/$2 302
+^https://www.ecosia.org/search?tt=43bbc89c&q=wk\+([^&]+).+ https://wikipedia.org/wiki/$2 302
 # gh (GitHub) header
-^https:\/\/duckduckgo.com\/\?q=gh\+([^&]+).+ https://github.com/search?q=$1 302
+^https://www.ecosia.org/search?tt=43bbc89c&q=gh\+([^&]+).+ https://github.com/search?q=$1 302
 # tf (Google 搜索 TestFlight)
-^https:\/\/duckduckgo.com\/\?q=tf(\+|%20)([^&]+).+ https://www.google.com/search?as_q=$2&as_sitesearch=testflight.apple.com 302
+^https://www.ecosia.org/search?tt=43bbc89c&q=tf(\+|%20)([^&]+).+ https://www.google.com/search?as_q=$2&as_sitesearch=testflight.apple.com 302
 # wb (微博) header
-^https:\/\/duckduckgo.com\/\?q=wb\+([^&]+).+ https://s.weibo.com/weibo/$1 302
+^https://www.ecosia.org/search?tt=43bbc89c&q=wb\+([^&]+).+ https://s.weibo.com/weibo/$1 302
 # wx (微信) header
-^https:\/\/duckduckgo.com\/\?q=wx\+([^&]+).+ https://weixin.sogou.com/weixinwap?query=$1 302
+^https://www.ecosia.org/search?tt=43bbc89c&q=wx\+([^&]+).+ https://weixin.sogou.com/weixinwap?query=$1 302
 # jd (京东) header
-^https:\/\/duckduckgo.com\/\?q=jd\+([^&]+).+ https://so.m.jd.com/ware/search.action?keyword=$1 302
+^https://www.ecosia.org/search?tt=43bbc89c&q=jd\+([^&]+).+ https://so.m.jd.com/ware/search.action?keyword=$1 302
 # tb (淘宝) header
-^https:\/\/duckduckgo.com\/\?q=tb\+([^&]+).+ https://s.m.taobao.com/h5?q=$1 302
+^https://www.ecosia.org/search?tt=43bbc89c&q=tb\+([^&]+).+ https://s.m.taobao.com/h5?q=$1 302
 # tm (天猫) header
-^https:\/\/duckduckgo.com\/\?q=tm\+([^&]+).+ https://s.m.tmall.com/m/search.htm?q=$1 302
+^https://www.ecosia.org/search?tt=43bbc89c&q=tm\+([^&]+).+ https://s.m.tmall.com/m/search.htm?q=$1 302
 # tw (Twitter) header
-^https:\/\/duckduckgo.com\/\?q=tw\+([^&]+).+ https://twitter.com/search?q=$1 302
+^https://www.ecosia.org/search?tt=43bbc89c&q=tw\+([^&]+).+ https://twitter.com/search?q=$1 302
 # rd (Reddit) header
-^https:\/\/duckduckgo.com\/\?q=tw\+([^&]+).+ https://www.reddit.com/search/?q=$1 302
+^https://www.ecosia.org/search?tt=43bbc89c&q=tw\+([^&]+).+ https://www.reddit.com/search/?q=$1 302
 # so (Stack Overflow) header
-^https:\/\/duckduckgo.com\/\?q=so\+([^&]+).+ https://stackoverflow.com/search?q=$1 302
+^https://www.ecosia.org/search?tt=43bbc89c&q=so\+([^&]+).+ https://stackoverflow.com/search?q=$1 302
 # ytb (YouTube) header
-^https:\/\/duckduckgo.com\/\?q=ytb\+([^&]+).+ https://www.youtube.com/results?search_query=$1 302
+^https://www.ecosia.org/search?tt=43bbc89c&q=ytb\+([^&]+).+ https://www.youtube.com/results?search_query=$1 302
 # ph (PornHub) header
-^https:\/\/duckduckgo.com\/\?q=ph\+([^&]+).+ https://pornhub.com/video/search?search=$1 302
+^https://www.ecosia.org/search?tt=43bbc89c&q=ph\+([^&]+).+ https://pornhub.com/video/search?search=$1 302
 # xv (Xvideos) header
-^https:\/\/duckduckgo.com\/\?q=xv\+([^&]+).+ https://www.xvideos.com/?k=$1 302
+^https://www.ecosia.org/search?tt=43bbc89c&q=xv\+([^&]+).+ https://www.xvideos.com/?k=$1 302
 # li (Libgen.is) header
-^https:\/\/duckduckgo.com\/\?q=li\+([^&]+).+ http://libgen.is/search.php?req=$1 302
+^https://www.ecosia.org/search?tt=43bbc89c&q=li\+([^&]+).+ http://libgen.is/search.php?req=$1 302
 # db （豆瓣） header
-^https:\/\/duckduckgo.com\/\?q=db\+([^&]+).+ https://m.douban.com/search/?query=$1 302
+^https://www.ecosia.org/search?tt=43bbc89c&q=db\+([^&]+).+ https://m.douban.com/search/?query=$1 302
 # bi (必应) header
-^https:\/\/duckduckgo.com\/\?q=bi\+([^&]+).+ https://www.bing.com/search?q=$1 302
+^https://www.ecosia.org/search?tt=43bbc89c&q=bi\+([^&]+).+ https://www.bing.com/search?q=$1 302
 # bd (百度) header
-^https:\/\/duckduckgo.com\/\?q=bd\+([^&]+).+ https://www.baidu.com/s?wd=$1 302
+^https://www.ecosia.org/search?tt=43bbc89c&q=bd\+([^&]+).+ https://www.baidu.com/s?wd=$1 302
 # bdtb (百度贴吧) header
-^https:\/\/duckduckgo.com\/\?q=bdtb\+([^&]+).+ https://tieba.baidu.com/f?kw=$1 302
+^https://www.ecosia.org/search?tt=43bbc89c&q=bdtb\+([^&]+).+ https://tieba.baidu.com/f?kw=$1 302
 # zh (知乎) header
-^https:\/\/duckduckgo.com\/\?q=zh\+([^&]+).+ https://www.zhihu.com/search?type=content&q=$1 302
+^https://www.ecosia.org/search?tt=43bbc89c&q=zh\+([^&]+).+ https://www.zhihu.com/search?type=content&q=$1 302
 # ccn (App Store 临时换至中国区)
-^https:\/\/duckduckgo.com\/\?q=ccn&.+ https://itunes.apple.com/WebObjects/MZStore.woa/wa/resetAndRedirect?dsf=143465&mt=8&url=/WebObjects/MZStore.woa/wa/viewSoftware?mt=8&id=1108187390&cc=cn&urlDesc= 302
+^https://www.ecosia.org/search?tt=43bbc89c&q=ccn&.+ https://itunes.apple.com/WebObjects/MZStore.woa/wa/resetAndRedirect?dsf=143465&mt=8&url=/WebObjects/MZStore.woa/wa/viewSoftware?mt=8&id=1108187390&cc=cn&urlDesc= 302
 # uus (App Store 临时换至美国区)
-^https:\/\/duckduckgo.com\/\?q=uus&.+ https://itunes.apple.com/WebObjects/MZStore.woa/wa/resetAndRedirect?dsf=143441&mt=8&url=/WebObjects/MZStore.woa/wa/viewSoftware?mt=8&id=1108187390&cc=us&urlDesc= 302
+^https://www.ecosia.org/search?tt=43bbc89c&q=uus&.+ https://itunes.apple.com/WebObjects/MZStore.woa/wa/resetAndRedirect?dsf=143441&mt=8&url=/WebObjects/MZStore.woa/wa/viewSoftware?mt=8&id=1108187390&cc=us&urlDesc= 302
 # hhk (App Store 临时换至香港区)
-^https:\/\/duckduckgo.com\/\?q=hhk&.+ https://itunes.apple.com/WebObjects/MZStore.woa/wa/resetAndRedirect?dsf=143463&mt=8&url=/WebObjects/MZStore.woa/wa/viewSoftware?mt=8&id=1108187390&cc=hk&urlDesc= 302
+^https://www.ecosia.org/search?tt=43bbc89c&q=hhk&.+ https://itunes.apple.com/WebObjects/MZStore.woa/wa/resetAndRedirect?dsf=143463&mt=8&url=/WebObjects/MZStore.woa/wa/viewSoftware?mt=8&id=1108187390&cc=hk&urlDesc= 302
 # ddg (DuckDuckGo) header
-^https:\/\/duckduckgo.com\/\?q=ddg\+([^&]+).+ https://duckduckgo.com/?ia=about&q=$1 302
+^https://www.ecosia.org/search?tt=43bbc89c&q=ddg\+([^&]+).+ https://duckduckgo.com/?ia=about&q=$1 302
 # 无指令 (Google) header
-^https:\/\/duckduckgo.com\/\?q=([^&]+).+ https://www.google.com/search?q=$1 302
+^https://www.ecosia.org/search?tt=43bbc89c&q=([^&]+).+ https://www.google.com/search?q=$1 302
 # Chrome  bd(baidu)
 ^https:\/\/www\.google\.com\/search\?q=bd\+([^&]+) https://m.baidu.com/s?word=$1 302
 
