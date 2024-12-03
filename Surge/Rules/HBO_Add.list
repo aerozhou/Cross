@@ -1,4 +1,6 @@
-# HBO 补充      
+# HBO 补充
+DOMAIN-SUFFIX,max.com
+DOMAIN-SUFFIX,discomax.com
 DOMAIN-SUFFIX,default.any-amer.prd.api.max.com     
 DOMAIN-SUFFIX,play.max.com     
 DOMAIN-SUFFIX,default.any-any.prd.api.max.com     
