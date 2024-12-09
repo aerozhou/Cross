@@ -1,10 +1,11 @@
 #!name=Streaming Ratings
-#!desc=Netflix & Disney+ & MAX(HBO) 评分显示 (豆瓣 + IMDB + 烂番茄)
+#!desc=Netflix & Disney+ & MAX(HBO) 评分显示 (豆瓣 + IMDB)
+#!system=mac
 
 [Script]
-# Netflix 评分
-netflix_ratings = type=http-request,pattern=^https?:\/\/(www\.)?netflix\.com\/(title|watch)\/.*,requires-body=0,script-path=https://raw.githubusercontent.com/URenko/surge/enhance/nf_rating.js
-netflix_ratings_2 = type=http-response,pattern=^https?:\/\/(www\.)?netflix\.com\/(title|watch)\/.*,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/URenko/surge/enhance/nf_rating.js
+# Netflix 评分 (来自 https://github.com/Marcio2536/surge/tree/main)
+netflix_rating = type=http-response,pattern=^https?:\/\/(www\.)?netflix\.com\/title\/\d+,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/Marcio2536/surge/main/nf_rating.js
+netflix_rating_imdb = type=http-request,pattern=^https?:\/\/(www\.)?netflix\.com\/title\/\d+,requires-body=0,script-path=https://raw.githubusercontent.com/Marcio2536/surge/main/nf_rating.js
 
 # Disney+ 评分
 disney_ratings = type=http-response,pattern=^https:\/\/disney\.api\.edge\.bamgrid\.com\/explore\/v\d\.\d\/page\/entity-,requires-body=1,max-size=0,binary-body-mode=0,script-path=https://raw.githubusercontent.com/NobyDa/Script/master/Disney/DisneyRating.js
