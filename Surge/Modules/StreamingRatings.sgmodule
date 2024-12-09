@@ -1,0 +1,21 @@
+#!name=Streaming Ratings
+#!desc=Netflix & Disney+ & HBO 评分显示 (豆瓣 + IMDB + 烂番茄)
+# #!system=ios
+#!arguments=脚本引擎:jsc,调试模式:0
+#!arguments-desc=脚本引擎：jsc/webview/auto，默认jsc。\n调试模式：1/0，开启/关闭。
+
+[Script]
+# Netflix 评分
+netflix_ratings = type=http-request,pattern=^https?://ios\.prod\.ftl\.netflix\.com/iosui/user/.+path=%5B%22videos%22%2C%\d+%22%2C%22summary%22%5D,requires-body=1,script-path=https://raw.githubusercontent.com/yichahucha/surge/master/nf_rating.js,timeout=10
+netflix_ratings = type=http-response,pattern=^https?://ios\.prod\.ftl\.netflix\.com/iosui/user/.+path=%5B%22videos%22%2C%\d+%22%2C%22summary%22%5D,requires-body=1,script-path=https://raw.githubusercontent.com/yichahucha/surge/master/nf_rating.js,timeout=10
+netflix_ratings_season = type=http-response,pattern=^https?://ios\.prod\.ftl\.netflix\.com/iosui/warmer/.+type=show-ath,requires-body=1,script-path=https://raw.githubusercontent.com/yichahucha/surge/master/nf_rating_season.js,timeout=10
+
+# Disney+ 评分
+disney_ratings = type=http-response,pattern=^https:\/\/disney\.api\.edge\.bamgrid\.com\/explore\/v\d\.\d\/page\/entity-,requires-body=1,max-size=0,binary-body-mode=0,debug={{{调试模式}}},script-path=https://raw.githubusercontent.com/NobyDa/Script/master/Disney/DisneyRating.js,engine={{{脚本引擎}}}
+
+# HBO 评分
+hbo_ratings = type=http-response,pattern=^https:\/\/(.+\.)?api\.hbo\.com\/content\/(.+\.)?detail,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/Neurogram-R/Surge/master/HBO_Rating.js
+hbo_ratings_season = type=http-response,pattern=^https:\/\/(.+\.)?api\.hbo\.com\/content\/(.+\.)?tiles,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/Neurogram-R/Surge/master/HBO_Rating.js
+
+[MITM]
+hostname = %APPEND% ios.prod.ftl.netflix.com, disney.api.edge.bamgrid.com, *.api.hbo.com
