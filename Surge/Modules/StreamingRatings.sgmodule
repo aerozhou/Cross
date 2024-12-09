@@ -1,20 +1,16 @@
 #!name=Streaming Ratings
 #!desc=Netflix & Disney+ & MAX(HBO) 评分显示 (豆瓣 + IMDB + 烂番茄)
 
-#!arguments=脚本引擎:jsc,调试模式:0
-#!arguments-desc=脚本引擎：jsc/webview/auto，默认jsc。\n调试模式：1/0，开启/关闭。
-
-[Script]  
+[Script]
 # Netflix 评分
-nf_rating_season = type=http-response,pattern=^https?:\/\/www\.netflix\.com\/title\/\d+,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/yichahucha/surge/master/nf_rating_season.js
-nf_rating = type=http-response,pattern=^https?:\/\/www\.netflix\.com\/(api\/title\/\d+|title\/\d+),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/yichahucha/surge/master/nf_rating.js
-nf_rating_imdb = type=http-request,pattern=^https?:\/\/www\.netflix\.com\/(api\/title\/\d+|title\/\d+),requires-body=0,script-path=https://raw.githubusercontent.com/yichahucha/surge/master/nf_rating.js
+netflix_ratings = type=http-request,pattern=^https?:\/\/(www\.)?netflix\.com\/(title|watch)\/.*,requires-body=0,script-path=https://raw.githubusercontent.com/URenko/surge/enhance/nf_rating.js
+netflix_ratings_2 = type=http-response,pattern=^https?:\/\/(www\.)?netflix\.com\/(title|watch)\/.*,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/URenko/surge/enhance/nf_rating.js
 
 # Disney+ 评分
-disney_ratings = type=http-response,pattern=^https:\/\/disney\.api\.edge\.bamgrid\.com\/explore\/v\d\.\d\/page\/entity-,requires-body=1,max-size=0,binary-body-mode=0,debug={{{调试模式}}},script-path=https://raw.githubusercontent.com/NobyDa/Script/master/Disney/DisneyRating.js,engine={{{脚本引擎}}}
+disney_ratings = type=http-response,pattern=^https:\/\/disney\.api\.edge\.bamgrid\.com\/explore\/v\d\.\d\/page\/entity-,requires-body=1,max-size=0,binary-body-mode=0,script-path=https://raw.githubusercontent.com/NobyDa/Script/master/Disney/DisneyRating.js
 
-# MAX(HBO) 评分
-max_ratings = type=http-response,pattern=^https?:\/\/(?:manifests\.api\.hbo\.com\/hls\.m3u8|*.max.com|*.api.hbo.com)\/(.*)\?api-version,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/Neurogram-R/Surge/master/MAX_Rating.js
+# MAX 评分
+max_ratings = type=http-response,pattern=^https:\/\/webapi\.max\.com\/v\w+\/episodes\/[\w-]+\/availability,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/liunice/MaxHelper/master/max_ratings.js
 
 [MITM]
-hostname = %APPEND% www.netflix.com, disney.api.edge.bamgrid.com, *.max.com, *.api.hbo.com, manifests.api.hbo.com
+hostname = %APPEND% www.netflix.com, netflix.com, disney.api.edge.bamgrid.com, webapi.max.com
