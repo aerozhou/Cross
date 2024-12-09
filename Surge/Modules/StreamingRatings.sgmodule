@@ -3,15 +3,15 @@
 #!system=mac
 
 [Script]
-# Netflix 评分 (来自 https://github.com/Marcio2536/surge/tree/main)
-netflix_rating = type=http-response,pattern=^https?:\/\/(www\.)?netflix\.com\/title\/\d+,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/Marcio2536/surge/main/nf_rating.js
-netflix_rating_imdb = type=http-request,pattern=^https?:\/\/(www\.)?netflix\.com\/title\/\d+,requires-body=0,script-path=https://raw.githubusercontent.com/Marcio2536/surge/main/nf_rating.js
+# Netflix 评分
+netflix_rating = type=http-request,pattern=^https?:\/\/ios(-.*)?\.prod\.ftl\.netflix\.com\/iosui\/user/.+path=%5B%22videos%22%2C%\d+%22%2C%22summary%22%5D,script-path=https://raw.githubusercontent.com/yichahucha/surge/master/nf_rating.js
+netflix_rating_season = type=http-response,pattern=^https?:\/\/ios(-.*)?\.prod\.ftl\.netflix\.com\/iosui\/user/.+path=%5B%22videos%22%2C%\d+%22%2C%22summary%22%5D,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/yichahucha/surge/master/nf_rating.js
 
 # Disney+ 评分
-disney_ratings = type=http-response,pattern=^https:\/\/disney\.api\.edge\.bamgrid\.com\/explore\/v\d\.\d\/page\/entity-,requires-body=1,max-size=0,binary-body-mode=0,script-path=https://raw.githubusercontent.com/NobyDa/Script/master/Disney/DisneyRating.js
+disney_ratings = type=http-response,pattern=^https:\/\/(disney|star)\.content\.edge\.bamgrid\.com\/(svc\/content\/DmcVideoBundle|svc\/content\/DmcVideo),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/NobyDa/Script/master/Disney/DisneyRating.js
 
 # MAX 评分
-max_ratings = type=http-response,pattern=^https:\/\/webapi\.max\.com\/v\w+\/episodes\/[\w-]+\/availability,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/liunice/MaxHelper/master/max_ratings.js
+max_ratings = type=http-response,pattern=^https:\/\/(client-api|webapi)\.max\.com\/(cms|v\w+\/episodes)\/(?!translations),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/Marcio2536/surge/main/max_ratings.js
 
 [MITM]
-hostname = %APPEND% www.netflix.com, netflix.com, disney.api.edge.bamgrid.com, webapi.max.com
+hostname = %APPEND% ios-*.prod.ftl.netflix.com, ios.prod.ftl.netflix.com, *.content.edge.bamgrid.com, *.max.com
