@@ -1,6 +1,5 @@
 #!name=Streaming Ratings
 #!desc=Netflix & Disney+ & HBO 评分显示 (豆瓣 + IMDB + 烂番茄)
-# #!system=ios
 #!arguments=脚本引擎:jsc,调试模式:0
 #!arguments-desc=脚本引擎：jsc/webview/auto，默认jsc。\n调试模式：1/0，开启/关闭。
 
