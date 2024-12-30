@@ -1,17 +1,25 @@
-#!name = 🎙️ Podcasts
-#!desc = 1.解锁 Podcasts 完整功能\n2.支持播客搜索和播放\n3.支持跨区播客订阅\n4.支持 Mac、iPhone、iPad 多端解锁
+#!name = 🎙️ Podcasts Enhanced
+#!desc = 1.解锁 Podcasts 完整功能\n2.支持播客搜索和播放\n3.支持跨区播客订阅\n4.优化网络连接问题\n5.修复 QUIC 阻断
 #!author = aerozhou
 #!homepage = https://github.com/aerozhou
 #!icon = https://www.apple.com/v/apple-podcasts/c/images/overview/icon_podcasts__erkizcg69mam_large.png
 #!category = Apple
-#!version = 1.0.0
+#!version = 1.1.0
 #!arguments=Proxy:🇺🇸美国,CountryCode:"US",LogLevel:"WARN"
 
 [General]
-force-http-engine-hosts = %APPEND% amp-api.podcasts.apple.com, bookkeeper.itunes.apple.com
+# 强制使用 HTTP 引擎
+force-http-engine-hosts = %APPEND% amp-api.podcasts.apple.com, bookkeeper.itunes.apple.com, *.qtlcdn.com, *.cdnmg.com
+# 禁用 QUIC
+quic = false
+# UDP 降级处理
+udp-policy-not-supported-behaviour = DIRECT
 
 [Rule]
-# Podcasts
+# CDN 相关域名直连
+DOMAIN-SUFFIX,qtlcdn.com,DIRECT
+DOMAIN-SUFFIX,cdnmg.com,DIRECT
+# Podcasts 核心服务
 DOMAIN,amp-api.podcasts.apple.com,{{{Proxy}}}
 DOMAIN,bookkeeper.itunes.apple.com,{{{Proxy}}}
 DOMAIN,client-api.itunes.apple.com,{{{Proxy}}}
@@ -28,7 +36,7 @@ play.itunes.apple.com = server:8.8.8.8
 podcasts.apple.com = server:8.8.8.8
 
 [MITM]
-hostname = %APPEND% *.podcasts.apple.com, play.itunes.apple.com, *-buy.itunes.apple.com, buy.itunes.apple.com, bookkeeper.itunes.apple.com, client-api.itunes.apple.com
+hostname = %APPEND% *.podcasts.apple.com, *.itunes.apple.com, *.qtlcdn.com, *.cdnmg.com, play.itunes.apple.com, *-buy.itunes.apple.com, buy.itunes.apple.com
 
 [Script]
 # 配置处理
