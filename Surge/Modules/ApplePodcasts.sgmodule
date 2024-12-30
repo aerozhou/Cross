@@ -1,0 +1,43 @@
+#!name = 🎙️ Podcasts
+#!desc = 1.解锁 Podcasts 完整功能\n2.支持播客搜索和播放\n3.支持跨区播客订阅\n4.支持 Mac、iPhone、iPad 多端解锁
+#!openUrl = http://boxjs.com/#/app/Podcasts
+#!author = aerozhou
+#!homepage = https://github.com/aerozhou
+#!icon = https://www.apple.com/v/apple-podcasts/c/images/overview/icon_podcasts__erkizcg69mam_large.png
+#!category = Apple
+#!version = 1.0.0
+#!arguments=Proxy:🇺🇸美国,CountryCode:"US",LogLevel:"WARN"
+#!arguments-desc=Proxy: Podcasts 分流规则使用的策略名\nCountryCode: 国家或地区代码\n    ├ US: 🇺🇸美国（推荐）\n    ├ GB: 🇬🇧英国\n    └ JP: 🇯🇵日本\n\nLogLevel: [调试] 日志等级\n    ├ OFF: 关闭\n    ├ ERROR: ❌ 错误\n    ├ WARN: ⚠️ 警告\n    ├ INFO: ℹ️ 信息\n    └ DEBUG: 🅱️ 调试
+
+[Rule]
+# 🎙️ Podcasts
+DOMAIN-SUFFIX,podcasts.apple.com,{{{Proxy}}}
+DOMAIN,amp-api.podcasts.apple.com,{{{Proxy}}}
+DOMAIN,play.itunes.apple.com,{{{Proxy}}}
+DOMAIN,bookkeeper.itunes.apple.com,{{{Proxy}}}
+DOMAIN,client-api.itunes.apple.com,{{{Proxy}}}
+
+[Script]
+# 配置处理
+🎙️ Podcasts.configs.request = type=http-request,pattern=^https?:\/\/amp-api\.podcasts\.apple\.com\/v1\/configs\/\w+,requires-body=1,script-path=https://raw.githubusercontent.com/aerozhou/Podcasts/main/js/Podcasts.request.js,argument=CountryCode="{{{CountryCode}}}"&LogLevel="{{{LogLevel}}}"
+
+# 搜索处理
+🎙️ Podcasts.search.request = type=http-request,pattern=^https?:\/\/amp-api\.podcasts\.apple\.com\/v1\/catalog\/\w+\/search,requires-body=1,script-path=https://raw.githubusercontent.com/aerozhou/Podcasts/main/js/Podcasts.request.js,argument=CountryCode="{{{CountryCode}}}"&LogLevel="{{{LogLevel}}}"
+
+# 目录浏览
+🎙️ Podcasts.browse.request = type=http-request,pattern=^https?:\/\/amp-api\.podcasts\.apple\.com\/v1\/catalog\/\w+\/browse,requires-body=1,script-path=https://raw.githubusercontent.com/aerozhou/Podcasts/main/js/Podcasts.request.js,argument=CountryCode="{{{CountryCode}}}"&LogLevel="{{{LogLevel}}}"
+
+# 播放控制
+🎙️ Podcasts.playback.request = type=http-request,pattern=^https?:\/\/play\.itunes\.apple\.com\/WebObjects\/MZPlay\.woa\/wa\/,requires-body=1,script-path=https://raw.githubusercontent.com/aerozhou/Podcasts/main/js/Podcasts.request.js,argument=CountryCode="{{{CountryCode}}}"&LogLevel="{{{LogLevel}}}"
+
+# 订阅管理
+🎙️ Podcasts.subscription.request = type=http-request,pattern=^https?:\/\/bookkeeper\.itunes\.apple\.com\/books\/v1\/subscriptions,requires-body=1,script-path=https://raw.githubusercontent.com/aerozhou/Podcasts/main/js/Podcasts.request.js,argument=CountryCode="{{{CountryCode}}}"&LogLevel="{{{LogLevel}}}"
+
+# 收听历史
+🎙️ Podcasts.history.request = type=http-request,pattern=^https?:\/\/amp-api\.podcasts\.apple\.com\/v1\/history\/,requires-body=1,script-path=https://raw.githubusercontent.com/aerozhou/Podcasts/main/js/Podcasts.request.js,argument=CountryCode="{{{CountryCode}}}"&LogLevel="{{{LogLevel}}}"
+
+# 热门排行
+🎙️ Podcasts.charts.request = type=http-request,pattern=^https?:\/\/amp-api\.podcasts\.apple\.com\/v1\/charts\/,requires-body=1,script-path=https://raw.githubusercontent.com/aerozhou/Podcasts/main/js/Podcasts.request.js,argument=CountryCode="{{{CountryCode}}}"&LogLevel="{{{LogLevel}}}"
+
+[MITM]
+hostname = %APPEND% amp-api.podcasts.apple.com, podcasts.apple.com, play.itunes.apple.com, bookkeeper.itunes.apple.com, client-api.itunes.apple.com
