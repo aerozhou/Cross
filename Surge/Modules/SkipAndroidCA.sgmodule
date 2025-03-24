@@ -1,8 +1,0 @@
-#!name=跳过部分App MITM
-#!desc=安卓手机不ROOT情况下无法安装系统证书，所以部分App得跳过。
-[MITM]            
-hostname = -*.coolapk.com, -api.coolapk.com, *       
-skip-server-cert-verify = false
-
-[Rule]
-DOMAIN-SUFFIX,coolapk.com,DIRECT
