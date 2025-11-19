@@ -1,9 +1,14 @@
 # Name: AppleIntelligence
+# Desc: Apple Intelligence / Siri / Private Relay / 搜索服务
 
-DOMAIN-SUFFIX,apple-relay.apple.com
-DOMAIN-SUFFIX,cp4.cloudflare.com
-DOMAIN-SUFFIX,apple-relay.fastly-edge.com
-DOMAIN-SUFFIX,apple-relay.cloudflare.com
-DOMAIN-SUFFIX,guzzoni.apple.com
-DOMAIN-SUFFIX,gspe1-ssl.ls.apple.com
-DOMAIN-SUFFIX,smoot.apple.com
+# ---- 官方文档要求的核心域名（必须）----
+DOMAIN-SUFFIX,guzzoni.apple.com              # Siri 与听写请求
+DOMAIN-SUFFIX,smoot.apple.com                # *.smoot.apple.com（Siri/搜索/聚焦）
+DOMAIN-SUFFIX,apple-relay.apple.com          # Apple 私有云计算 / 扩展
+DOMAIN-SUFFIX,apple-relay.cloudflare.com     # Cloudflare 中转
+DOMAIN-SUFFIX,apple-relay.fastly-edge.com    # Fastly 中转
+DOMAIN-SUFFIX,cp4.cloudflare.com             # Cloudflare 中转
+
+# ---- QUIC 走代理（非常重要）----
+AND,((DOMAIN-KEYWORD,apple-relay),(PROTOCOL,QUIC))
+AND,((DOMAIN-KEYWORD,apple-intelligence),(PROTOCOL,QUIC))
